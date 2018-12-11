@@ -15,7 +15,7 @@ export const SEARCH_TERM = 'SEARCH_TERM';
 export const fetchNotes = () => dispatch => {
   dispatch({ type: FETCH_NOTES });
   axios
-    .get('https://lambda-notes-blv.herokuapp.com/api/notes')
+    .get('https://back-end-blv.herokuapp.com/api/notes')
     .then(response => {
       dispatch({ type: FETCH_NOTES_SUCCESS, payload: response.data });
     })
@@ -27,7 +27,7 @@ export const fetchNotes = () => dispatch => {
 // Adds a note
 export const addNote = note => dispatch => {
   axios
-    .post('https://lambda-notes-blv.herokuapp.com/api/notes', note)
+    .post('https://back-end-blv.herokuapp.com/api/notes', note)
     .then(response => {
       note.id = response.data[0];
       dispatch({ type: ADD_NOTE_SUCCESS, payload: note });
@@ -41,7 +41,7 @@ export const addNote = note => dispatch => {
 export const fetchSingleNote = id => dispatch => {
   dispatch({ type: FETCH_NOTES });
   axios
-    .get(`https://lambda-notes-blv.herokuapp.com/api/notes/${id}`)
+    .get(`https://back-end-blv.herokuapp.com/api/notes/${id}`)
     .then(response => {
       dispatch({ type: FETCH_SINGLE_NOTE, payload: response.data });
     })
@@ -53,7 +53,7 @@ export const fetchSingleNote = id => dispatch => {
 // Deletes a note
 export const deleteNote = id => dispatch => {
   axios
-    .delete(`https://lambda-notes-blv.herokuapp.com/api/notes/${id}`)
+    .delete(`https://back-end-blv.herokuapp.com/api/notes/${id}`)
     .then(response => {
       dispatch({ type: DELETE_NOTE, payload: id });
     })
@@ -65,7 +65,7 @@ export const deleteNote = id => dispatch => {
 // Edit one note
 export const editNote = (id, note) => dispatch => {
   axios
-    .put(`https://lambda-notes-blv.herokuapp.com/api/notes/${id}`, note)
+    .put(`https://back-end-blv.herokuapp.com/api/notes/${id}`, note)
     .then(response => {
       dispatch({ type: EDIT_NOTE, payload: response.data });
     });
