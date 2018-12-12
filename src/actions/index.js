@@ -29,7 +29,7 @@ export const addNote = note => dispatch => {
   axios
     .post('https://back-end-blv.herokuapp.com/api/notes', note)
     .then(response => {
-      note.id = response.data[0];
+      note.id = response.data;
       dispatch({ type: ADD_NOTE_SUCCESS, payload: note });
     })
     .catch(error => {

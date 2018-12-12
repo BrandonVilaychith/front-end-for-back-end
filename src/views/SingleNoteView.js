@@ -16,8 +16,8 @@ class SingleNoteView extends Component {
     const id = this.props.match.params.id;
     this.props.fetchSingleNote(id);
   }
-
   render() {
+    console.log(this.props.notes);
     if (this.props.loading) {
       return (
         <div className="loader">
